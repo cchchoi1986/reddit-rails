@@ -1,0 +1,15 @@
+<h1> a list of posts should be here</h1>
+
+<% @posts.each do |post| %>
+  <%= link_to post do %>
+    <div>
+      <%= post.id %>
+      <%= post.title %>
+      <%= post.url %>
+      <%= post.created_at %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<%= link_to "New Post", new_post_path %>

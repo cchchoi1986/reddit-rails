@@ -1,0 +1,10 @@
+<h1>New form to create votes</h1>
+
+<%= form_for @vote, :method => :post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :foragainst %>
+  <%= f.text_field :foragainst %>
+  <%= f.submit "Doge" %>
+<% end %>
