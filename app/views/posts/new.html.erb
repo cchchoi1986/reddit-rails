@@ -1,7 +1,10 @@
 <h1> I need a form here to create new posts</h1>
 
 <!-- POST METHOD for posts -->
-<%= form_for @post, :method => :post do |f| %>
+<%= simple_form_for @post, :method => :post do |f| %>
+  
+  <%= flash[:message] %>
+
   <%= f.label :title %>
   <%= f.text_field :title %>
 

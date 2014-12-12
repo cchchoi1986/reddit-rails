@@ -1,0 +1,58 @@
+<div class="container">
+  <table class="table">
+    <h2>Owner: <%= @user.email %></h2>
+    <h5>Created: <%= @user.created_at %></h5>
+  </table>
+
+  <h1>Posts</h1>
+  
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr class="info">
+        <th class="col-xs-1">ID</th>
+        <th class="col-xs-3">Email</th>
+        <th class="col-xs-2">Title</th>
+        <th class="col-xs-3">URL</th>
+        <th class="col-xs-2">Time Posted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.posts.each do |post| %>
+        <tr>
+          <td class="col-xs-1"><%= post.id %></td>
+          <td class="col-xs-3"><%= link_to post.user do %><%= post.user.email %><% end %></td>
+          <td class="col-xs-2"><%= link_to post do %><%= post.title %><% end %></td>
+          <td class="col-xs-3"><%= post.url %></td>
+          <td class="col-xs-2"><%= time_ago_in_words(post.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <h1>Comments</h1>
+
+  <table class="table table-bordered table-condensed">
+    
+    <thead>
+      <tr class="success">
+        <th>Post</th>
+        <th>Content</th>
+        <th>Owner</th>
+        <th>Time Posted</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.comments.each do |comment| %>
+        <tr>
+          <td><%= link_to comment.post do %><%= comment.post.title %><% end %></td>
+          <td><%= link_to comment do %><%= comment.content %><% end %></td>
+          <td><%= link_to comment.user do %><%= comment.user.email %><% end %></td>
+          <td><%= time_ago_in_words(comment.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>

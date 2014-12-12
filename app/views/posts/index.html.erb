@@ -1,15 +1,45 @@
-<h1> a list of posts should be here</h1>
+<div class="container">
+  <h1>New Posts</h1>
 
-<% @posts.each do |post| %>
-  <%= link_to post do %>
-    <div>
-      <%= post.id %>
-      <%= post.title %>
-      <%= post.url %>
-      <%= post.created_at %>
-    </div>
-  <% end %>
-<% end %>
+      <!-- POST METHOD for posts -->
+      <%= simple_form_for @post, :method => :post do |f| %>
+        
+        <%= flash[:message] %>
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :url %>
+        <%= f.text_field :url %>
+
+        <%= f.submit "Submit" %>
+      <% end %>
+
+  <h1>Posts</h1>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr class="info">
+        <th class="col-xs-1">ID</th>
+        <th class="col-xs-3">Email</th>
+        <th class="col-xs-2">Title</th>
+        <th class="col-xs-3">URL</th>
+        <th class="col-xs-2">Time Posted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td class="col-xs-1">Link <%= post.id %></td>
+          <td class="col-xs-3"><%= post.user.email %></td>
+          <td class="col-xs-2"><%= link_to post do %><%= post.title %><% end %></td>
+          <td class="col-xs-3"><%= post.url %></td>
+          <td class="col-xs-2"><%= time_ago_in_words(post.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "New Post", new_post_path %>
+</div>
 
 
-<%= link_to "New Post", new_post_path %>
+

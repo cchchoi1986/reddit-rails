@@ -19,4 +19,7 @@
 /config/application.yml
 .env
 
+# Ignore mailer config
+/config/environments/developemnt.rb
+
 .DS_Store
