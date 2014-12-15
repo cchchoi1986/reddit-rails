@@ -6,7 +6,9 @@
     <h5>URL: <%= @post.url %></h5>
     <h5>Owner: <%= @post.user.email %></h5>
     <h5>Datetime: <%= @post.created_at %></h5>
+    <h5><%= "number of votes: #{@post.post_votes.count}" %></h5>
   </table>
+  <%= link_to("VOTE", "/post_votes/#{@post.id}", :method => :post, :class => "", :id => "") %>
 
   <%= form_for @comment do |f| %>
     <%= f.label :content %>

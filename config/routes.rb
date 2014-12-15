@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#index'
+  root 'posts#index'
 
   # get '/posts' => 'posts#index'
 
@@ -14,9 +14,11 @@ Rails.application.routes.draw do
 
   # get '/posts/new' => 'posts#new'
   resources :posts
-  resources :votes
   resources :comments
   resources :users
+  #given the post :id, use the post_votes controller to create a vote
+  post 'post_votes/:id', to: 'post_votes#create'
+
   # get '/comments' => 'comments#index'
 
   # Example of regular route:

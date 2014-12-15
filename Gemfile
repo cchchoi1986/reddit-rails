@@ -34,6 +34,8 @@ gem 'spring',        group: :development
 gem 'simple_form'
 
 gem 'devise'
+
+gem 'meta_request', group: :development
 # Use unicorn as the app server
 # gem 'unicorn'
 
