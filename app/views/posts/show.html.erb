@@ -6,18 +6,23 @@
     <h5>URL: <%= @post.url %></h5>
     <h5>Owner: <%= @post.user.email %></h5>
     <h5>Datetime: <%= @post.created_at %></h5>
-    <h5>Number of votes: <span id="hihi"><%= @post.post_votes.count %></span></h5>
+    <h5>Number of votes: <span id="number-votes"><%= @post.post_votes.count %></span></h5>
   </table>
+
+  <div class='row'>
+    <%= button_to("VOTE", "#", :class => "button_vote col-xs-2", 'data-id' => @post.id) %>
+    <div class="vote-error col-xs-9"></div>
+  </div>
   
-  <%= button_to("VOTE", "#", :class => "button_vote", 'data-id' => @post.id) %>
-  
-  <%= form_for @comment, :html => {'data-postId' => @post.id} do |f| %>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    
-    <%= f.text_field :post_id, :value => @post.id, :hidden => true %>
-    <%= f.submit "Submit comment" %>
-  <% end %>
+  <div class="row">
+      <%= form_for @comment, :id => 'new_comment', :html => {'data-postId' => @post.id} do |f| %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+        
+        <%= f.text_field :post_id, :value => @post.id, :hidden => true %>
+        <%= f.submit "Submit comment" %>
+      <% end %>
+  </div>
   
   <h1>Comments</h1>
   
@@ -30,8 +35,8 @@
       </tr>
     </thead>
     
-    <tbody>
-      <% @post.comments.each do |comment| %>
+    <tbody class="comment-table">
+      <% @post.comments.reverse.each do |comment| %>
         <tr>
           <td><%= comment.content %></td>
           <td><%= comment.user.email %></td>

@@ -1,4 +1,5 @@
 class PostVotesController < ApplicationController
+  before_action :authenticate_user!
   # skip_before_filter :verify_authenticity_token
   def create
     # finds post given url with id

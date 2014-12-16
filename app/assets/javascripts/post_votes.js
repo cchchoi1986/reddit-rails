@@ -14,9 +14,12 @@ $(document).ready(function(){
         success: function(response){
           // alert("success!");
           // console.log(response);
-          num_votes = $('#hihi').text();
+          num_votes = $('#number-votes').text();
           num_votes++;
-          $('#hihi').text(num_votes);
+          $('#number-votes').text(num_votes);
+        },
+        error: function(response){
+          $('.vote-error').append(response.responseText);
         }
       });
     });

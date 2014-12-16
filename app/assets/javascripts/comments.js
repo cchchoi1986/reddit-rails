@@ -5,18 +5,29 @@
 
 $(document).ready(function(){
   {
-    $(document).on('submit','.button_comment',function(event){
+    $(document).on('submit','#new_comment',function(event){
       event.preventDefault();
+      // console.log($(this).data('postid'));
+      // console.log(event);
       $.ajax({
         type: 'post',
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        url: '/post_votes/' + $(this).data('id'),
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        },
+        url: '/comments',
+        data: {
+          'comment': {
+            'content': $('#comment_content').val(),
+            'post_id': $(this).data('postid'),
+          }
+        },
         success: function(response){
-          // alert("success!");
-          // console.log(response);
-          num_votes = $('#hihi').text();
-          num_votes++;
-          $('#hihi').text(num_votes);
+          console.log(response);
+          $('.comment-table').prepend("<tr><td>"+$('#comment_content').val()+"</td><td>"+$('.userlogin').text()+"</td></tr>");
+          $('#comment_content').val("");
+        },
+        error: function(response){
+          console.log('no');
         }
       });
     });

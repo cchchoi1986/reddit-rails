@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   #given the post :id, use the post_votes controller to create a vote
   post 'post_votes/:id', to: 'post_votes#create'
 
+  get 'getall', to: 'comments#getAll'
+
   # get '/comments' => 'comments#index'
 
   # Example of regular route:

@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  
+  before_action :authenticate_user!, only: [:new, :create]
+  # same thing
+  # before_action :authenticate_user!, only: [:index, :show]
+  # authenticate_user is provided by Devise, again Devise is a library (gem) in Ruby
+
+
   def index #index.html
     #how do I get data from database and put it here??
     # this will store all the posts in an array 
