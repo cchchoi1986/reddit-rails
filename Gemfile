@@ -35,6 +35,8 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'pry'
+
 gem 'meta_request', group: :development
 # Use unicorn as the app server
 # gem 'unicorn'

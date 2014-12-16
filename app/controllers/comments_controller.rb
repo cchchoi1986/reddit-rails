@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   
   def create
+    # params([:comment][:content]) ---> dog
+    # params([:comment][:post_id]) ---> 3
+    # binding.pry
     comment = current_user.comments.new(comment_params)
     if comment.save
       redirect_to comment.post
