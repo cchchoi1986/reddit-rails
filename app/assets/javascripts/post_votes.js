@@ -4,13 +4,13 @@
 
 $(document).ready(function(){
   {
-    $(document).on('submit','#new_comment',function(event){
+    $(document).on('click','.button_vote',function(event){
       event.preventDefault();
       // alert("submitted");
       $.ajax({
         type: 'post',
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        url: '/comments/' + $(this).data('id'),
+        url: '/post_votes/' + $(this).data('id'),
         success: function(response){
           // alert("success!");
           // console.log(response);
