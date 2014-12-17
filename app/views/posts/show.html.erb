@@ -14,11 +14,10 @@
   <%= form_for @comment, :remote => true, :html => {'data-postId' => @post.id} do |f| %>
     <%= f.label :content %>
     <%= f.text_field :content, :id =>'comment_input' %>
-    
     <%= f.text_field :post_id, :value => @post.id, :hidden => true %>
     <%= f.submit "Submit comment" %>
   <% end %>
-  
+  <div id='comment_error'></div>
   <h1>Comments</h1>
   
   <table class="table table-bordered table-condensed">

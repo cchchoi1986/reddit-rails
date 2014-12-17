@@ -11,11 +11,14 @@ class CommentsController < ApplicationController
         #order matters here. its going to show javascript (json) response first
 
         #in Rails, the convention is we need to create a 'create.js.erb' file inside comments view folder
-        format.js
+        format.js {render 'create.js.erb'}
         format.html { redirect_to myComments.post}
-    end
+      end
     else
-      redirect_to :back
+      respond_to do |format|
+        format.js {render 'fail.js.erb'}
+        format.html {redirect_to :back}
+      end
     end
   end
 

@@ -3,7 +3,7 @@
   <h1>New Posts</h1>
 
       <!-- POST METHOD for posts -->
-      <%= simple_form_for @post, :method => :post do |f| %>
+      <%= form_for @post, :method => :post do |f| %>
         
         <%= flash[:message] %>
 
@@ -19,23 +19,25 @@
   <h1>Posts</h1>
   <table class="table table-bordered table-condensed">
     <thead>
-      <tr class="info">
+      <tr class="info row">
         <th class="col-xs-1">ID</th>
         <th class="col-xs-2">Email</th>
         <th class="col-xs-2">Title</th>
-        <th class="col-xs-3">URL</th>
+        <th class="col-xs-2">URL</th>
         <th class="col-xs-2">Time Posted</th>
-        <th class="col-xs-1">Votes</th>
+        <th class="col-xs-1">Vote</th>
+        <th class="col-xs-1">Vote count</th>
       </tr>
     </thead>
     <tbody>
       <% @posts.each do |post| %>
-        <tr>
+        <tr class="row">
           <td class="col-xs-1"><%= post.id %></td>
           <td class="col-xs-2"><%= post.user.email %></td>
           <td class="col-xs-2"><%= link_to post do %><%= post.title %><% end %></td>
-          <td class="col-xs-3"><%= post.url %></td>
+          <td class="col-xs-2"><%= post.url %></td>
           <td class="col-xs-2"><%= time_ago_in_words(post.created_at) %></td>
+          <td class="col-xs-1"><%= button_to("Up", "#", :class => "button_vote", 'data-id' => @post.id) %></td>
           <td class="col-xs-1"><%= post.post_votes.count %></td>
         </tr>
       <% end %>
