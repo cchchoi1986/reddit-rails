@@ -14,11 +14,14 @@ Rails.application.routes.draw do
 
   # get '/posts/new' => 'posts#new'
   resources :posts
-  resources :comments
+  # resources :comments
   resources :users
   #given the post :id, use the post_votes controller to create a vote
   post 'post_votes/:id', to: 'post_votes#create'
 
+  post 'comments' => 'comments#create'
+
+  # this is denis's example for project1
   get 'getall', to: 'comments#getAll'
 
   # get '/comments' => 'comments#index'

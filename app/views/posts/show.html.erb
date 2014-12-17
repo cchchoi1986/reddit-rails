@@ -15,7 +15,7 @@
   </div>
   
   <div class="row">
-      <%= form_for @comment, :id => 'new_comment', :html => {'data-postId' => @post.id} do |f| %>
+      <%= form_for @comment, :remote => true, :id => 'new_comment', :html => {'data-postId' => @post.id} do |f| %>
         <%= f.label :content %>
         <%= f.text_field :content %>
         

@@ -6,7 +6,7 @@
 $(document).ready(function(){
   {
     $(document).on('submit','#new_comment',function(event){
-      event.preventDefault();
+      // event.preventDefault();
       // console.log($(this).data('postid'));
       // console.log(event);
       $.ajax({
@@ -16,14 +16,13 @@ $(document).ready(function(){
         },
         url: '/comments',
         data: {
-          'comment': {
-            'content': $('#comment_content').val(),
-            'post_id': $(this).data('postid'),
-          }
+          'content': $('#comment_content').val(),
+          'post_id': $(this).data('postid'),
         },
         success: function(response){
           console.log(response);
-          $('.comment-table').prepend("<tr><td>"+$('#comment_content').val()+"</td><td>"+$('.userlogin').text()+"</td></tr>");
+          // $('.comment-table').prepend("<tr><td>"+$('#comment_content').val()+"</td><td>"+$('.userlogin').text()+"</td></tr>");
+          $('.comment-table').prepend("<tr><td>"+response.data.content+"</td><td>"+response.email+"</td></tr>");
           $('#comment_content').val("");
         },
         error: function(response){
