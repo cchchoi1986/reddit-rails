@@ -18,13 +18,7 @@
     </thead>
     <tbody>
       <% @user.posts.each do |post| %>
-        <tr>
-          <td class="col-xs-1"><%= post.id %></td>
-          <td class="col-xs-3"><%= link_to post.user do %><%= post.user.email %><% end %></td>
-          <td class="col-xs-2"><%= link_to post do %><%= post.title %><% end %></td>
-          <td class="col-xs-3"><%= post.url %></td>
-          <td class="col-xs-2"><%= time_ago_in_words(post.created_at) %></td>
-        </tr>
+        <%= render :partial => 'post', :locals => {:post => post} %>
       <% end %>
     </tbody>
   </table>
@@ -46,9 +40,9 @@
     <tbody>
       <% @user.comments.each do |comment| %>
         <tr>
-          <td><%= link_to comment.post do %><%= comment.post.title %><% end %></td>
-          <td><%= link_to comment do %><%= comment.content %><% end %></td>
-          <td><%= link_to comment.user do %><%= comment.user.email %><% end %></td>
+          <td><%= comment.post.title %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment.user.email %></td>
           <td><%= time_ago_in_words(comment.created_at) %></td>
         </tr>
       <% end %>

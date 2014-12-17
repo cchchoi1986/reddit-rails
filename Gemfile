@@ -41,6 +41,10 @@ gem 'meta_request', group: :development
 # Use unicorn as the app server
 # gem 'unicorn'
 
+#these two gems will help debugging
+gem 'better_errors', group: :development
+gem 'binding_of_caller', group: :development
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

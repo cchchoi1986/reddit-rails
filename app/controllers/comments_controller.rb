@@ -4,9 +4,16 @@ class CommentsController < ApplicationController
     # params([:comment][:content]) ---> dog
     # params([:comment][:post_id]) ---> 3
     # binding.pry
-    comment = current_user.comments.new(comment_params)
-    if comment.save
-      redirect_to comment.post
+    @myComment = current_user.comments.new(comment_params)
+    if @myComment.save
+      # tells computer that it needs to render pages in the following format
+      respond_to do |format|
+        #order matters here. its going to show javascript (json) response first
+
+        #in Rails, the convention is we need to create a 'create.js.erb' file inside comments view folder
+        format.js
+        format.html { redirect_to myComments.post}
+    end
     else
       redirect_to :back
     end
@@ -14,7 +21,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-    @post = Post.all
+    # @post = Post.all
   end
 
   private
