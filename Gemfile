@@ -37,6 +37,12 @@ gem 'devise'
 
 gem 'pry'
 
+gem "paperclip", "~>4.2"
+
+gem 'aws-sdk', '~> 1.5.7'
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'meta_request', group: :development
 # Use unicorn as the app server
 # gem 'unicorn'

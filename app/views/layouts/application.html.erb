@@ -18,6 +18,8 @@
               <!-- default :method is :POST for button_to -->
           <%= current_user.email %>
           <%= button_to "Sign out", destroy_user_session_path, :method =>  :delete %>
+          <%= link_to "Edit", edit_user_registration_path %>
+          <%= link_to "Edit pic", edit_user_path(current_user) %>
         <% else %>
           <!-- default :method is :GET for link_to -->
           <%= link_to "Sign up", new_user_registration_path %>
