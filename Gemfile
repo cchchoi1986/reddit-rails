@@ -53,3 +53,4 @@ gem 'meta_request', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'angularjs-rails'

@@ -1,5 +1,59 @@
 <div class="container">
   <%= render 'layouts/header' %>
+
+
+  <h1>Angular</h1>
+  <input type="text" placeholder="Please type something" ng-model="name">
+
+  <h3>{{name}}</h3>
+----------------------------------------
+<h3>Connect Angular Controller Defined in JS to View</h3>
+
+<div ng-controller="PostCtrl">
+  <h6>{{ brand }}</h6>
+  <h7>{{ total }}</h7>
+  <form ng-submit="addPrice()" name="priceForm">
+    <!-- You can now refer to @scope.newPrice in your PostCtrl -->
+    <input type="text" placeholder="Add a new price" ng-model="newPrice">
+  </form>
+  <ul ng-repeat="price in prices track by $index">
+    <!-- addPrice() will look for a function inside the PostCtrl -->
+    <li>{{ price }}</li>
+  </ul>
+</div>
+----------------------------------------
+<!--   <h1>Jquery</h1>
+  <input type="text" placeholder="Please type something" id="name_input">
+
+  <h3 id="name"></h3>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#name_input').on('keyup',function(){
+        $('#name').text($('#name_input').val());
+      })
+    })
+  </script>
+ -->----------------------------------------
+
+<div ng-controller="CompanyCtrl">
+  <input type="text" placeholder="Search for companies" ng-model="companyName">
+  <ul ng-repeat="company in companies | filter:companyName">
+    <li>{{ company }}</li>
+    <a href="http://www.{{company}}.com">http://www.{{company}}.com</a>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
   <h1>New Posts</h1>
 
       <!-- POST METHOD for posts -->
