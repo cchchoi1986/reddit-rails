@@ -1,8 +1,11 @@
 <h1>Hello World</h1>
-  
+<!-- <h1>{{ current_user.id }}</h1> -->
+
 <form ng-submit="addPost()" name="postForm">
     <!-- You can now refer to @scope.newPrice in your PostCtrl -->
-  <input type="text" placeholder="Add a new post" ng-model="newPost">
+  Title: <input type="text" placeholder="Title" ng-model="newPostTitle">
+  URL: <input type="text" placeholder="URL" ng-model="newPostUrl">
+  <input type="submit" >
 </form>
 
 <table class='table table-bordered table-condensed'>
@@ -14,10 +17,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in lists">
+    <tr ng-repeat="item in lists | orderBy:'-created_at':reverse">
       <td><a ng-href="#{{item.link}}">{{ item.title }}</a></td>
-      <td ng-if="item.url != ''">{{ item.url }}</td>
-      <td ng-if="item.url == ''">No URL</td>
+      <td ng-if="item.url && (item.url != '')">{{ item.url }}</td>
+      <td ng-if="!item.url || (item.url == '')">No URL</td>
       <td>{{ item.author_email }}</td>
     </tr>
   </tbody>

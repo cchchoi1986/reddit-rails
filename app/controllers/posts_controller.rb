@@ -9,12 +9,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.new(post_params)
-    if post.save
-      redirect_to posts_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      # redirect_to posts_path
+      render 'create.json.jbuilder'
     else
-      flash[:message] = post.errors.messages
-      redirect_to :back
+      flash[:message] = @post.errors.messages
+      # redirect_to :back
+      render status: 500
     end
   end
 

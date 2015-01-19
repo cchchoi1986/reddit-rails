@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
 
   def onlytwenty
     post_count = Post.count
-    if post_count > 20
+    if post_count > 200
       self.errors.add(:base, "Cannot post more than 20 entries")
     end
   end

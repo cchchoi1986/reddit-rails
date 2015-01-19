@@ -35,6 +35,10 @@ app.config(['$routeProvider', function($routeProvider){
   })
 }]);
 
+// app.controller('UserCtrl', ['$scope', '$http', '$routeParams', function(){
+  
+// }])
+
 app.controller('PostListCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
   // $scope.array = ["hello", "kitty", "world"];
 
@@ -44,10 +48,38 @@ app.controller('PostListCtrl', ['$scope', '$http', '$routeParams', function($sco
   // })
   $http.get('/posts.json').success(function(data, status, xhr){
     $scope.lists = data.posts;
-    // console.log(data.posts[$routeParams.id]);
+    $scope.current_user = data.current_user;
+    // console.log(data);
     // console.log(status);
     // console.log(xhr);
-  })
+  });
+  $scope.addPost = function(){
+    console.log($scope.newPostTitle);
+    console.log($scope.newPostUrl);
+    data = {};
+    data["title"] = $scope.newPostTitle;
+    data["url"] = $scope.newPostUrl;
+    // console.log(data);
+    $http.post('/posts/', data)
+      .success(function(response, status, xhr){
+        $scope.newPostTitle = "";
+        $scope.newPostUrl = "";
+        // console.log(response);
+        // console.log(status);
+        if ( data["url"] == ""){
+          response["url"] = 'No URL';
+          $scope.lists.push(response);
+        }
+        else {
+          $scope.lists.push(response);
+        }
+      // show the new post in the table
+    })
+      .error(function(){
+        console.log('error');
+      });
+  };
+  
 }]);
 
 app.controller('PostItemCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){

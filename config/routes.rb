@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments
   resources :users
+  get 'user', to: 'users#show_current_user'
   #given the post :id, use the post_votes controller to create a vote
   post 'post_votes/:id', to: 'post_votes#create'
 
