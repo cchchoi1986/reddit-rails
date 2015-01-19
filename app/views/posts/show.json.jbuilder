@@ -1,0 +1,9 @@
+json.title @post.title
+json.url @post.url
+json.link url_for(post_path(@post))
+json.author_email @post.user.email
+
+json.comments @comments do |comment|
+  json.content comment.content
+  json.author_email comment.user.email
+end

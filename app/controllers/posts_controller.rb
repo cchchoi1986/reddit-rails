@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @post = Post.new
     # @comments = Comment.all
+    # render json: @posts
   end
 
   def create
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
     # params[:id] will look for the id in the URL
     # this basically retrieves the post with a specific id
     @post = Post.find(params[:id])
+    @comments = Comment.where(:post_id => params[:id])
     @comment = Comment.new
   end
 

@@ -54,3 +54,4 @@ gem 'meta_request', group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'angularjs-rails'
+gem 'slim'

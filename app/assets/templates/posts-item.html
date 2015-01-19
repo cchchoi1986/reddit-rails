@@ -1,0 +1,19 @@
+<h1>Title: {{ item.title }}</h1>
+<h2>URL: {{ item.url }}</h2>
+<h2>Author Email: {{ item.author_email }}</h2>
+<!-- <h2>{{item}}</h2> -->
+
+<table class='table table-bordered table-condensed'>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Author Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="comment in comments">
+      <td>{{ comment.content }}</td>
+      <td>{{ comment.author_email }}</td>
+    </tr>
+  </tbody>
+</table>
